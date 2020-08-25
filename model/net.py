@@ -18,14 +18,14 @@ class Model():
               loss_weights  = {'mask_output':1., 'contour_output':1.},
               metrics       = [jaccard_distance, 'acc']):
         
-        model_name    = self.model_name
-        classes       = self.classes
-        input_shape   = self.input_shape
-        dropout       = self.dropout
-        learning_rate = self.learning_rate
-        loss          = self.loss
-        loss_weights  = self.loss_weights
-        metrics       = self.metrics
+        self.model_name    = model_name
+        self.classes       = classes
+        self.input_shape   = input_shape
+        self.dropout       = dropout
+        self.learning_rate = learning_rate
+        self.loss          = loss
+        self.loss_weights  = loss_weights
+        self.metrics       = metrics
         
     def build(self):
         
@@ -66,6 +66,8 @@ class Model():
             u = L.Dropout(dropout)(u)
 
             return u
+        
+        filters = [(64,3),(128,3),(256,3),(512,3)]
 
         input_tensor = L.Input(self.input_shape)
         
